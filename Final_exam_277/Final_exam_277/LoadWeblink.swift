@@ -21,7 +21,7 @@ class LoadWeblink {
         if let url = URL(string: urlString) {
             do {
                 let contents = try String(contentsOf: url, encoding: String.Encoding.utf8)
-                //print("Link https://hr.nju.edu.cn/")
+                print("Link https://hr.nju.edu.cn/")
 
                 let news = contents.slices(from: "news_title\"><a ", to: "</span></li>")
                 var current = 0
@@ -49,7 +49,9 @@ class LoadWeblink {
                     if (type == 3) && (current >= 23) && (current < 29) {
                         result.append(toAdd)
                     }
+                    print(current)
                     current += 1
+                    
                 }
             } catch {
                 print("contents could not be loaded")

@@ -17,8 +17,8 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.baselineAdjustment = .alignCenters
+        //titleLabel.adjustsFontSizeToFitWidth = true
+        //titleLabel.baselineAdjustment = .alignCenters
         // Initialization code
     }
 

@@ -25,18 +25,17 @@ class ViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        guard let link = link else {
-            fatalError("Target link not set!")
-        }
-        print("Link: \(link)")
-        
+
         //let myURL = URL(string: "http://hr.nju.edu.cn")
-        let myURL = URL(string: link)
-        let mySeq = URLRequest(url: myURL!)
+        if let linkurl = link {
+            print(linkurl)
+            let myURL = URL(string: linkurl)
+            let mySeq = URLRequest(url: myURL!)
         
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
-        webView.load(mySeq)
+            webView.uiDelegate = self
+            webView.navigationDelegate = self
+            webView.load(mySeq)
+        }
     }
 
 

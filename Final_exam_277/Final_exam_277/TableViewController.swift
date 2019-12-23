@@ -30,7 +30,7 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        //print("Try to get value...")
+        print("Try to get value...")
         personInform = loadWebContentService.getevents(type: 0)
         //print("0 ok")
         personNews = loadWebContentService.getevents(type: 1)
@@ -38,7 +38,7 @@ class TableViewController: UITableViewController {
         publicity = loadWebContentService.getevents(type: 2)
         //print("2 ok")
         hiring = loadWebContentService.getevents(type: 3)
-        //print("3 ok")
+        print("3 ok")
         
     }
 
@@ -72,10 +72,10 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tabelCell", for: indexPath) as! TableViewCell
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "tabelCell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
         
-        // 人事通知
-        if (indexPath.section == 0) && (indexPath.row < personInform.count) {
+        /*if (indexPath.section == 0) && (indexPath.row < personInform.count) {
             cell.titleLabel?.text = personInform[indexPath.row].title
             if personInform[indexPath.row].isHot {
                 cell.fireLabel?.text = "🔥"
@@ -103,7 +103,34 @@ class TableViewController: UITableViewController {
             } else {
                 cell.fireLabel?.text = ""
             }
+        }*/
+        
+        if (indexPath.section == 0) && (indexPath.row < personInform.count) {
+            if personInform[indexPath.row].isHot {
+                cell.textLabel?.text = "🔥" + personInform[indexPath.row].title
+            } else {
+                cell.textLabel?.text = personInform[indexPath.row].title
+            }
+        } else if (indexPath.section == 1) && (indexPath.row < personNews.count) {
+            if personNews[indexPath.row].isHot {
+                cell.textLabel?.text = "🔥" + personNews[indexPath.row].title
+            } else {
+                cell.textLabel?.text = personNews[indexPath.row].title
+            }
+        } else if (indexPath.section == 2) && (indexPath.row < publicity.count) {
+            if publicity[indexPath.row].isHot {
+                cell.textLabel?.text = "🔥" + publicity[indexPath.row].title
+            } else {
+                cell.textLabel?.text = publicity[indexPath.row].title
+            }
+        } else if (indexPath.section == 3) && (indexPath.row < hiring.count) {
+            if hiring[indexPath.row].isHot {
+                cell.textLabel?.text = "🔥" + hiring[indexPath.row].title
+            } else {
+                cell.textLabel?.text = hiring[indexPath.row].title
+            }
         }
+        
         return cell
     }
     
